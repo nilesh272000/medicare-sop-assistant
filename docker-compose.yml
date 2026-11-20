@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      SNAPSHOT_DIR: ${SNAPSHOT_DIR:-data/sops}
+    volumes:
+      - index-data:/app/var          # index + cache survive restarts
+volumes:
+  index-data:

@@ -1,0 +1,908 @@
+{
+  "summary": {
+    "provider": "fake",
+    "chat_model": "fake-extractive-v1",
+    "embed_model": "fake-hash-bow-v1:1024",
+    "before": {
+      "overall": "13/15",
+      "answerable": "8/10",
+      "unanswerable": "3/3",
+      "conflict": "2/2"
+    },
+    "after_update": "6/8",
+    "pii": "5/5",
+    "retrieval_hit": "18/18",
+    "governance_violations": 0,
+    "cache_warm_hit_before_reindex": true,
+    "reindex": {
+      "added": [
+        "SOP-16 v1.0 (SOP-16_Fire_Safety_and_Evacuation.pdf)",
+        "SOP-17 v1.0 (SOP-17_Staff_Salary_Advance.pdf)"
+      ],
+      "updated": [
+        "SOP-02 v2.3 -> v2.4 - Walk-in reserve increased from 20% to 25% after Q3 waiting-time review.",
+        "SOP-08 v2.0 -> v2.1 - Front-desk refund authority raised to Rs 1,500.",
+        "SOP-11 v1.2 -> v2.0 - Aligned needle-stick reporting with SOP-04 (2-hour rule)."
+      ],
+      "withdrawn": [
+        "SOP-15 v1.1"
+      ],
+      "renamed": [
+        "SOP-05: SOP-05_Biomedical_Waste_Segregation_and_Disposal.pdf -> SOP-05_Biomedical_Waste_Management_Rules.pdf"
+      ],
+      "texts_embedded": 13,
+      "embeddings_reused": 16,
+      "embedding_calls": 1,
+      "unchanged": 10
+    },
+    "reindex_second_run": {
+      "status": "no_changes",
+      "embedding_calls": 0
+    },
+    "initial_index": {
+      "documents": 15,
+      "texts_embedded": 74
+    },
+    "llm_calls": 22,
+    "total_cost_usd": 0.0,
+    "total_tokens": 36354,
+    "mean_latency_ms": 2.0,
+    "wall_time_s": 2.5,
+    "conflict_flagged": "0/2",
+    "recommends_stricter": "0/2"
+  },
+  "before": [
+    {
+      "id": "Q01",
+      "type": "answerable",
+      "pass": false,
+      "checks": {
+        "answered": true,
+        "cites SOP-04": false,
+        "has /2\\s*hours?/": false,
+        "has /OH-05/": false,
+        "has /soap|running water/": false,
+        "has /6\\s*weeks/": false,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-11: \u2022 Any injury to a staff member at work, including slips, falls, cuts and needle-stick injuries. \u2022 Near misses that could have caused injury.",
+      "citations": [
+        "SOP-11 v1.2, section 2 (What to report), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-04",
+        "SOP-11"
+      ],
+      "top_score": 0.3994,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 3.1,
+      "input_tokens": 1094,
+      "output_tokens": 58,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "What is the procedure for a needle-stick injury?",
+      "expected": "Let it bleed, wash with soap and running water for 2+ min (no bleach/alcohol), inform Clinic Manager/senior nurse, report to Occupational Health Officer within 2 hours, complete form OH-05 same shift, source patient testing with consent, follow-up tests at 6 wks/3 mo/6 mo."
+    },
+    {
+      "id": "Q02",
+      "type": "answerable",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-05": true,
+        "has /\\bred\\b/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-05: Bin / container: Yellow bag | What goes in: Infectious and anatomical waste | Examples: Soiled dressings, cotton swabs, expired medicines | Final disposal: Incineration by authorised agency Bin / container: Red bag | What goes in: Contaminated recyclable plastic | Examples: IV tubes, catheters, syringes without needles, gloves | Final disposal: Autoclave, then recycling",
+      "citations": [
+        "SOP-05 v2.2, section 2 (Colour coding), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-03",
+        "SOP-05",
+        "SOP-10"
+      ],
+      "top_score": 0.1903,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.9,
+      "input_tokens": 1674,
+      "output_tokens": 114,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "Which bin do used IV tubes and gloves go into?",
+      "expected": "Red bag (contaminated recyclable plastic); autoclaved then recycled."
+    },
+    {
+      "id": "Q03",
+      "type": "answerable",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-02": true,
+        "has /15\\s*min/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-02: Consultation type: General physician - new | Slot length: 15 min | Max per doctor per session: 14 | Notes: Includes vitals by nurse before consult Consultation type: General physician - follow-up | Slot length: 10 min | Max per doctor per session: 20 | Notes: Within 14 days of last visit",
+      "citations": [
+        "SOP-02 v2.3, section 2 (Standard slot durations), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-02",
+        "SOP-06",
+        "SOP-10"
+      ],
+      "top_score": 0.249,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.9,
+      "input_tokens": 1834,
+      "output_tokens": 93,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "How long is a new general physician appointment slot?",
+      "expected": "15 minutes, max 14 per doctor per session."
+    },
+    {
+      "id": "Q04",
+      "type": "answerable",
+      "pass": false,
+      "checks": {
+        "answered": false,
+        "cites SOP-06": false,
+        "has /do not use|don.t use|not be used/": false,
+        "has /1\\s*hour|one hour/": false,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "not_found",
+      "answer": "I don't know. The SOPs available to you do not cover this question. Please check with your Clinic Manager, or with HR for HR matters.",
+      "citations": [],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-02",
+        "SOP-06",
+        "SOP-10"
+      ],
+      "top_score": 0.1936,
+      "llm_called": true,
+      "refusal_reason": "model_not_found",
+      "latency_ms": 1.8,
+      "input_tokens": 1835,
+      "output_tokens": 18,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "What should I do if the vaccine fridge shows 10 degrees?",
+      "expected": "Do not use vaccines; label 'Do not use - under review' and keep refrigerated; record time, temperature, duration; inform Vaccination Programme Lead within 1 hour; discard only on written advice."
+    },
+    {
+      "id": "Q05",
+      "type": "answerable",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-10": true,
+        "has /light blue/": true,
+        "lacks /lavender (?:is|should be|first)\\b[^.]*first/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-10: Order: 2 | Tube cap colour: Light blue | Additive: Sodium citrate | Common tests: PT/INR, coagulation Order: 4 | Tube cap colour: Lavender | Additive: EDTA | Common tests: CBC, HbA1c",
+      "citations": [
+        "SOP-10 v3.1, section 4 (Tube order of draw), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-04",
+        "SOP-07",
+        "SOP-10"
+      ],
+      "top_score": 0.192,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.9,
+      "input_tokens": 1731,
+      "output_tokens": 66,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "Which tube should be drawn first: lavender or light blue?",
+      "expected": "Light blue (sodium citrate) is drawn before lavender (EDTA). Order: culture, light blue, red/gold, lavender, grey."
+    },
+    {
+      "id": "Q06",
+      "type": "answerable",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-08": true,
+        "has /1,?000/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-08: Front-desk staff can approve refunds up to Rs 1,000 for billing errors. Refunds between Rs 1,000 and Rs 10,000 need Clinic Manager approval.\nSOP-13: Apply in the HR portal at least 7 days in advance for planned leave. Clinic Managers approve leave only if the clinic's minimum staffing (1 doctor, 2 nurses, 1 front-desk executive per session) is still met.",
+      "citations": [
+        "SOP-08 v2.0, section 4 (Refunds), page 1",
+        "SOP-13 v3.0, section 3 (Applying for leave), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-08",
+        "SOP-13",
+        "SOP-15"
+      ],
+      "top_score": 0.3426,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 2.2,
+      "input_tokens": 1476,
+      "output_tokens": 112,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "Up to what amount can front-desk staff approve a refund?",
+      "expected": "Up to Rs 1,000 for billing errors; Rs 1,000-10,000 needs Clinic Manager; above Rs 10,000 needs Finance Controller."
+    },
+    {
+      "id": "Q07",
+      "type": "answerable",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-07": true,
+        "has /missing|abduct/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-07: Code: Code Blue | Meaning: Medical emergency: cardiac or respiratory arrest | Who responds: Doctor on duty, two nurses, crash cart | Announce by: Overhead announcement + dial 111 Code: Code Pink | Meaning: Missing or abducted child | Who responds: Security and front desk lock exits | Announce by: Overhead announcement",
+      "citations": [
+        "SOP-07 v4.0, section 2 (Emergency codes), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-07",
+        "SOP-14"
+      ],
+      "top_score": 0.29,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.7,
+      "input_tokens": 1129,
+      "output_tokens": 100,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "What does Code Pink mean?",
+      "expected": "Missing or abducted child; security and front desk lock exits; overhead announcement."
+    },
+    {
+      "id": "Q08",
+      "type": "answerable",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-12": true,
+        "has /1\\s*hour|one hour/": true,
+        "has /data protection officer|\\bDPO\\b/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-12: Report any suspected data breach (lost laptop, wrong email recipient, unauthorised access) to the Data Protection Officer within 1 hour of noticing it, at dpo@medicare-clinics.example. Do not try to investigate it yourself.",
+      "citations": [
+        "SOP-12 v2.5, section 5 (Breach reporting), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-11",
+        "SOP-12",
+        "SOP-15"
+      ],
+      "top_score": 0.4459,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.7,
+      "input_tokens": 1522,
+      "output_tokens": 76,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "How quickly must a suspected data breach be reported, and to whom?",
+      "expected": "Within 1 hour, to the Data Protection Officer (dpo@medicare-clinics.example)."
+    },
+    {
+      "id": "Q09",
+      "type": "answerable",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-15": true,
+        "has /\\bno\\b|cannot|can.t|not (?:be )?(?:allowed|permitted|prescribed)|prohibited/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-15: Doctors can prescribe List O and List A medicines in a tele-consultation. Prohibited-list medicines, including Schedule X drugs, cannot be prescribed by tele-consultation.",
+      "citations": [
+        "SOP-15 v1.1, section 4 (Prescriptions), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-02",
+        "SOP-09",
+        "SOP-15"
+      ],
+      "top_score": 0.4481,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.7,
+      "input_tokens": 1716,
+      "output_tokens": 63,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "Can a doctor prescribe Schedule X drugs during a tele-consultation?",
+      "expected": "No. Prohibited-list medicines including Schedule X cannot be prescribed by tele-consultation."
+    },
+    {
+      "id": "Q10",
+      "type": "answerable",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-12": true,
+        "has /\\b21\\b/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-12: Outpatient records are kept for 3 years from the last visit. Records of minors are kept until the patient turns 21 or for 3 years, whichever is longer.",
+      "citations": [
+        "SOP-12 v2.5, section 4 (Retention), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-02",
+        "SOP-12",
+        "SOP-15"
+      ],
+      "top_score": 0.401,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.8,
+      "input_tokens": 1769,
+      "output_tokens": 58,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "How long are outpatient records of a 15-year-old patient kept?",
+      "expected": "Until the patient turns 21 or for 3 years, whichever is longer (so until age 21 in most cases)."
+    },
+    {
+      "id": "Q11",
+      "type": "unanswerable",
+      "pass": true,
+      "checks": {
+        "refused": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": null,
+      "status": "not_found",
+      "answer": "I don't know. The SOPs available to you do not cover this question. Please check with your Clinic Manager, or with HR for HR matters.",
+      "citations": [],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-01",
+        "SOP-02",
+        "SOP-15"
+      ],
+      "top_score": 0.1571,
+      "llm_called": true,
+      "refusal_reason": "model_not_found",
+      "latency_ms": 1.6,
+      "input_tokens": 1951,
+      "output_tokens": 18,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "What is the parking reimbursement policy for doctors?",
+      "expected": "Not covered by the SOPs. The assistant should say it doesn't know and suggest contacting HR."
+    },
+    {
+      "id": "Q12",
+      "type": "unanswerable",
+      "pass": true,
+      "checks": {
+        "refused": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": null,
+      "status": "not_found",
+      "answer": "I don't know. The SOPs available to you do not cover this question. Please check with your Clinic Manager, or with HR for HR matters.",
+      "citations": [],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [],
+      "top_score": 0.0779,
+      "llm_called": false,
+      "refusal_reason": "below_relevance_threshold",
+      "latency_ms": 1.3,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "What is the paediatric dose of amoxicillin?",
+      "expected": "Not covered. Clinical dosing is not in the SOPs; the assistant must not answer from general knowledge."
+    },
+    {
+      "id": "Q13",
+      "type": "unanswerable",
+      "pass": true,
+      "checks": {
+        "refused": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": null,
+      "status": "not_found",
+      "answer": "I don't know. The SOPs available to you do not cover this question. Please check with your Clinic Manager, or with HR for HR matters.",
+      "citations": [],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-06",
+        "SOP-08"
+      ],
+      "top_score": 0.1317,
+      "llm_called": true,
+      "refusal_reason": "model_not_found",
+      "latency_ms": 1.4,
+      "input_tokens": 1098,
+      "output_tokens": 18,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "Who is the CEO of MediCare Clinics?",
+      "expected": "Not covered by the SOPs."
+    },
+    {
+      "id": "Q14",
+      "type": "conflict",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-04": true,
+        "cites SOP-11": true,
+        "has /\\b2\\s*hours?/": true,
+        "has /24\\s*hours?/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-11: Report every staff injury, including needle-stick injuries, to your Clinic Manager within 24 hours of the incident by completing the Incident Report form (IR-01). The Clinic Manager forwards the form to the Facilities and Safety Manager within 48 hours.\nSOP-04: Report the injury to the Occupational Health Officer by phone within 2 hours of the incident, and complete the Sharps Injury Form (OH-05) before the end of the same shift. The 2-hour window exists because PEP for HIV is most effective when started within 2 hours and should not be started later than 72 hours.",
+      "citations": [
+        "SOP-11 v1.2, section 3 (Reporting timeline), page 1",
+        "SOP-04 v3.0, section 3 (Reporting), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-04",
+        "SOP-08",
+        "SOP-11"
+      ],
+      "top_score": 0.5154,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 2.5,
+      "input_tokens": 1538,
+      "output_tokens": 165,
+      "cost_usd": 0.0,
+      "conflict_flagged": false,
+      "recommends_stricter": false,
+      "role": "clinic_manager",
+      "question": "Within how many hours must a needle-stick injury be reported?",
+      "expected": "SOP-04 v3.0 (2026) says report to Occupational Health within 2 hours; SOP-11 v1.2 (2023) says report to Clinic Manager within 24 hours on IR-01. A good answer surfaces both, notes SOP-04 is newer and more specific, and recommends the 2-hour rule while flagging the conflict."
+    },
+    {
+      "id": "Q15",
+      "type": "conflict",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-06": true,
+        "cites SOP-09": true,
+        "has /twice/": true,
+        "has /once/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-06: Record the refrigerator temperature twice daily, at clinic opening and at clinic closing, in the Cold Chain Log (CC-01). Record the minimum and maximum temperatures from the data logger at the same time.\nSOP-09: Insulin, some eye drops and vaccines stocked by the pharmacy are kept in the pharmacy refrigerator at 2 to 8 degrees Celsius. Record the refrigerator temperature once daily at clinic opening in the pharmacy log (PH-03).",
+      "citations": [
+        "SOP-06 v3.2, section 3 (Temperature monitoring), page 1",
+        "SOP-09 v1.4, section 4 (Refrigerated medicines), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-06",
+        "SOP-09",
+        "SOP-11"
+      ],
+      "top_score": 0.3108,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.8,
+      "input_tokens": 1472,
+      "output_tokens": 130,
+      "cost_usd": 0.0,
+      "conflict_flagged": false,
+      "recommends_stricter": false,
+      "role": "clinic_manager",
+      "question": "How often should the vaccine refrigerator temperature be recorded?",
+      "expected": "SOP-06 says twice daily (opening and closing) for the vaccine fridge; SOP-09 says once daily for the pharmacy fridge, which also stores some vaccines. A good answer notes the difference and recommends the stricter twice-daily rule for any fridge holding vaccines."
+    }
+  ],
+  "after_update": [
+    {
+      "id": "U01",
+      "type": "after_update",
+      "pass": false,
+      "checks": {
+        "answered": true,
+        "cites SOP-02": true,
+        "SOP-02 cited as v2.4": true,
+        "has /25\\s*%/": false,
+        "lacks /\\b20\\s*%/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-02: A patient arriving more than 15 minutes late is moved to the next free slot or the walk-in queue. Mark no-shows in the CMS at the end of the session.",
+      "citations": [
+        "SOP-02 v2.4, section 4 (No-shows and late arrivals), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-02",
+        "SOP-12",
+        "SOP-16"
+      ],
+      "top_score": 0.1839,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 3.8,
+      "input_tokens": 1838,
+      "output_tokens": 58,
+      "cost_usd": 0.0,
+      "role": "front_desk",
+      "question": "What percentage of slots should be kept free for walk-ins?",
+      "expected": "25% until 9:00 AM (SOP-02 v2.4). Answering 20% means stale chunks or a stale cache."
+    },
+    {
+      "id": "U02",
+      "type": "after_update",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-08": true,
+        "SOP-08 cited as v2.1": true,
+        "has /1,?500/": true,
+        "lacks /(?<![\\d,])1,?000(?![\\d,])/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-08: Front-desk staff can approve refunds up to Rs 1,500 for billing errors. Refunds between Rs 1,500 and Rs 10,000 need Clinic Manager approval.",
+      "citations": [
+        "SOP-08 v2.1, section 4 (Refunds), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-01",
+        "SOP-07",
+        "SOP-08"
+      ],
+      "top_score": 0.3437,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.9,
+      "input_tokens": 1815,
+      "output_tokens": 56,
+      "cost_usd": 0.0,
+      "role": "front_desk",
+      "question": "Up to what amount can front-desk staff approve a refund?",
+      "expected": "Rs 1,500 (SOP-08 v2.1). Rs 1,000 means stale data."
+    },
+    {
+      "id": "U03",
+      "type": "after_update",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites one of SOP-04/SOP-11": true,
+        "SOP-11 cited as v2.0": true,
+        "has /\\b2\\s*hours?/": true,
+        "no conflict reported": true,
+        "no SOP-11 v1.2 in context": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-11: Report every staff injury to your Clinic Manager within 24 hours of the incident by completing the Incident Report form (IR-01). Exception: needle-stick and sharps injuries must first be reported to the Occupational Health Officer within 2 hours, as set out in SOP-04.\nSOP-04: Report the injury to the Occupational Health Officer by phone within 2 hours of the incident, and complete the Sharps Injury Form (OH-05) before the end of the same shift. The 2-hour window exists because PEP for HIV is most effective when started within 2 hours and should not be started later than 72 hours.",
+      "citations": [
+        "SOP-11 v2.0, section 3 (Reporting timeline), page 1",
+        "SOP-04 v3.0, section 3 (Reporting), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-04",
+        "SOP-08",
+        "SOP-11"
+      ],
+      "top_score": 0.4621,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 2.0,
+      "input_tokens": 1576,
+      "output_tokens": 169,
+      "cost_usd": 0.0,
+      "role": "nurse",
+      "question": "Within how many hours must a needle-stick injury be reported?",
+      "expected": "Within 2 hours to Occupational Health (SOP-04), and IR-01 within 24 hours (SOP-11 v2.0). There is no longer a conflict; reporting one means the old SOP-11 v1.2 chunks were not removed."
+    },
+    {
+      "id": "U04",
+      "type": "after_update",
+      "pass": true,
+      "checks": {
+        "refused": true,
+        "no SOP-15 in context or answer": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": null,
+      "status": "not_found",
+      "answer": "I don't know. The SOPs available to you do not cover this question. Please check with your Clinic Manager, or with HR for HR matters.",
+      "citations": [],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-01",
+        "SOP-02",
+        "SOP-09"
+      ],
+      "top_score": 0.2207,
+      "llm_called": true,
+      "refusal_reason": "model_not_found",
+      "latency_ms": 1.8,
+      "input_tokens": 1928,
+      "output_tokens": 18,
+      "cost_usd": 0.0,
+      "role": "doctor",
+      "question": "Can a doctor prescribe Schedule X drugs during a tele-consultation?",
+      "expected": "The tele-consultation SOP (SOP-15) has been withdrawn, so the current SOPs do not cover this. Must not cite SOP-15."
+    },
+    {
+      "id": "U05",
+      "type": "after_update",
+      "pass": false,
+      "checks": {
+        "answered": true,
+        "cites SOP-16": true,
+        "has /alarm|code red|112/": false,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-16: \u2022 Fire wardens lead the evacuation for their zone and check toilets and consultation rooms. \u2022 Use the stairs.\nSOP-03: Use alcohol-based hand rub (ABHR) for 20 to 30 seconds when hands are not visibly soiled. ABHR dispensers must be available at the entrance of every consultation room.",
+      "citations": [
+        "SOP-16 v1.0, section 4 (Evacuation), page 1",
+        "SOP-03 v5.0, section 3 (Method), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-02",
+        "SOP-03",
+        "SOP-16"
+      ],
+      "top_score": 0.153,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 1.9,
+      "input_tokens": 1779,
+      "output_tokens": 96,
+      "cost_usd": 0.0,
+      "role": "front_desk",
+      "question": "What should I do when I discover smoke in a consultation room?",
+      "expected": "R.A.C.E.: rescue, raise the alarm (Code Red, 112), contain (close doors), extinguish if small and trained or evacuate (SOP-16)."
+    },
+    {
+      "id": "U06",
+      "type": "after_update",
+      "pass": true,
+      "checks": {
+        "refused": true,
+        "no SOP-17 in context or answer": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": null,
+      "status": "not_found",
+      "answer": "I don't know. The SOPs available to you do not cover this question. Please check with your Clinic Manager, or with HR for HR matters.",
+      "citations": [],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-06"
+      ],
+      "top_score": 0.1427,
+      "llm_called": true,
+      "refusal_reason": "model_not_found",
+      "latency_ms": 1.4,
+      "input_tokens": 662,
+      "output_tokens": 18,
+      "cost_usd": 0.0,
+      "role": "nurse",
+      "question": "What is the maximum salary advance I can take?",
+      "expected": "Must not answer from SOP-17 (HR-only). Respond that no SOP available to this role covers it."
+    },
+    {
+      "id": "U07",
+      "type": "after_update",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-17": true,
+        "has /50,?000/": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-17: The maximum advance is one month's gross salary or Rs 50,000, whichever is lower. It is recovered through equal monthly salary deductions over a maximum of 6 months.",
+      "citations": [
+        "SOP-17 v1.0, section 3 (Amount and repayment), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-04",
+        "SOP-16",
+        "SOP-17"
+      ],
+      "top_score": 0.3466,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 2.0,
+      "input_tokens": 1563,
+      "output_tokens": 62,
+      "cost_usd": 0.0,
+      "role": "hr",
+      "question": "What is the maximum salary advance a staff member can take?",
+      "expected": "One month's gross salary or Rs 50,000, whichever is lower; recovered over max 6 months (SOP-17)."
+    },
+    {
+      "id": "U08",
+      "type": "after_update",
+      "pass": true,
+      "checks": {
+        "answered": true,
+        "cites SOP-05": true,
+        "has /\\bred\\b/": true,
+        "no duplicate retrieved sections": true,
+        "context within role access": true,
+        "context only from published versions": true
+      },
+      "retrieval_hit": true,
+      "status": "answered",
+      "answer": "SOP-05: Bin / container: Yellow bag | What goes in: Infectious and anatomical waste | Examples: Soiled dressings, cotton swabs, expired medicines | Final disposal: Incineration by authorised agency Bin / container: Red bag | What goes in: Contaminated recyclable plastic | Examples: IV tubes, catheters, syringes without needles, gloves | Final disposal: Autoclave, then recycling",
+      "citations": [
+        "SOP-05 v2.2, section 2 (Colour coding), page 1"
+      ],
+      "conflict": false,
+      "cached": false,
+      "context_docs": [
+        "SOP-03",
+        "SOP-05",
+        "SOP-10"
+      ],
+      "top_score": 0.1903,
+      "llm_called": true,
+      "refusal_reason": "",
+      "latency_ms": 2.3,
+      "input_tokens": 1674,
+      "output_tokens": 114,
+      "cost_usd": 0.0,
+      "role": "clinic_manager",
+      "question": "Which bin do used IV tubes and gloves go into?",
+      "expected": "Red bag (SOP-05). SOP-05's file was renamed but its content is unchanged; it must not be duplicated in results."
+    }
+  ],
+  "pii": [
+    {
+      "input": "Patient Ramesh Kumar, MRN 448812, has a fever after vaccination. What do we do?",
+      "expected": "flag: name + MRN",
+      "flagged": true,
+      "categories": [
+        "mrn",
+        "name"
+      ],
+      "pass": true
+    },
+    {
+      "input": "My patient's Aadhaar is 4521 8890 1234, can I store a copy?",
+      "expected": "flag: Aadhaar number",
+      "flagged": true,
+      "categories": [
+        "aadhaar"
+      ],
+      "pass": true
+    },
+    {
+      "input": "Call 98480 22113 to confirm the appointment - what is the reschedule policy?",
+      "expected": "flag: phone number",
+      "flagged": true,
+      "categories": [
+        "phone"
+      ],
+      "pass": true
+    },
+    {
+      "input": "What is the policy for patients without ID?",
+      "expected": "no flag",
+      "flagged": false,
+      "categories": [],
+      "pass": true
+    },
+    {
+      "input": "Mrs. S. Rao (DOB 12/04/1961) wants her records - how long does it take?",
+      "expected": "flag: name + DOB",
+      "flagged": true,
+      "categories": [
+        "date_of_birth",
+        "name"
+      ],
+      "pass": true
+    }
+  ]
+}
